@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.xxxx</groupId>
+  <artifactId>springboot01</artifactId>
+  <version>1.0-SNAPSHOT</version>
+    <!--修改打包方式，默认是jar包，改成war包-->
+    <packaging>war</packaging>
+
+  <name>springboot01</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+      <!--打包跳过测试-->
+      <skipTests>true</skipTests>
+  </properties>
+
+    <!-- spring boot项目必须要设置parent标签 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <!--ctrl点进去，找到<artifactId>spring-boot-dependencies</artifactId>再点进去，看到parent控制应用的统一版本-->
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <!-- 父类项目统一对项目依赖版本统一控制! -->
+        <version>2.5.6</version>
+    </parent>
+
+
+
+  <dependencies>
+      <!--spring boot应用一般首选starter坐标-->
+
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-web</artifactId>
+      </dependency>
+
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-test</artifactId>
+          <scope>test</scope>
+          <exclusions>
+              <exclusion>
+                  <groupId>org.junit.vintage</groupId>
+                  <artifactId>junit-vintage-engine</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+
+      <!--添加依赖，忽略spring boot内置的tomcat容器，使用外部提供的服务器，但是不忽略也可以，在外部安装的tomcat面前，内置的不会启动-->
+      <!--<dependency>-->
+          <!--<groupId>org.springframework.boot</groupId>-->
+          <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+          <!--<scope>provided</scope>-->
+      <!--</dependency>-->
+
+      <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-thymeleaf</artifactId>
+      </dependency>
+
+      <!-- 网络请求 -->
+      <dependency>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpclient</artifactId>
+          <version>4.5.13</version>
+      </dependency>
+      <!-- alibaba的fastjson -->
+      <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>fastjson</artifactId>
+          <version>1.2.51</version>
+      </dependency>
+
+      <!--okhttp-->
+      <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+      <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
+      <dependency>
+          <groupId>com.squareup.okhttp3</groupId>
+          <artifactId>okhttp</artifactId>
+          <version>3.14.9</version>
+      </dependency>
+
+
+  </dependencies>
+
+
+  <build>
+      <!--设置生产war包的名称-->
+      <finalName>springboot01</finalName>
+
+      <plugins>
+          <!--打包插件-->
+          <plugin>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-maven-plugin</artifactId>
+          </plugin>
+
+      </plugins>
+  </build>
+</project>

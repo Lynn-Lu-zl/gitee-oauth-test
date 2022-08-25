@@ -1,0 +1,35 @@
+#以空一格来分上下级
+#server:
+# 设置项目启动的端口号,port:空格8989
+# port: 8989
+# 设置项目的访问路径（上下文路径），port和servlet同一级，context-path是servlet的下一级
+# servlet:
+#  context-path: /mvc02
+
+# 动态切换环境配置
+spring:
+ profiles:
+   active: dev
+ thymeleaf:
+    cache: false
+    suffix: .html
+    encoding: UTF-8
+
+
+gitee:
+  oauth:
+    clientid: db79b7dee204deb521cde6a973c14aec9b2dab75b1c87d096be7027d407a9399
+    clientsecret: e0c6105c4e0a8798fd7652b1a428fbf038daa6027f0a1ba67b05c781fe98b566
+    callback: http://localhost:8989/callback
+
+#日志配置
+#logging:
+#
+# pattern:
+#  console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger- %msg%n"
+#  level: debug
+#
+# file:
+#  path: "."
+#  name: "springboot.log"
+
